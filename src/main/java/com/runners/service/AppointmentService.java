@@ -14,6 +14,7 @@ import com.runners.repository.AppointmentRepository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class AppointmentService {
     private AppointmentRepository appointmentRepository;
 
     @Autowired
-
+    @Lazy
     private DoctorService doctorService;
 
     @Autowired
-
+    @Lazy
     private PatientService patientService;
 
 

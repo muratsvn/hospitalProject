@@ -111,4 +111,16 @@ public class DoctorService {
     }
 
 
+    public Doctor getDoctorByTcNo(String tcNo) {
+       Doctor doctor = doctorRepository.findByTcNo(tcNo).orElseThrow(
+                ()-> new ResourceNotFoundException("Doctor not found by tc : "+ tcNo));
+        return doctor;
+  }
+   public boolean existsDoctor(String tcNo)
+   { boolean doctorexists = doctorRepository.existsByTcNo(tcNo);
+       return doctorexists;
+    }
+
+
+
 }

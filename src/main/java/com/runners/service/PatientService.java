@@ -106,5 +106,13 @@ public class PatientService {
     }
 
 
+    public boolean existsPatient(String tcNo) {
+        boolean patientExists = patientRepository.existsByTcNo(tcNo);//orElseThrow(()-> new ResourceNotFoundException("Patient not found by tcNo :" + tcNo));
+        return patientExists;
+    }
 
+    public Patient getPatientByTc(String tcNo) {
+        Patient patient = patientRepository.findByTcNo(tcNo).orElseThrow(()-> new ResourceNotFoundException("Patient not found by tcNo :" + tcNo));
+    return patient;
+    }
 }

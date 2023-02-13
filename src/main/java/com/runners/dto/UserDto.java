@@ -23,6 +23,8 @@ public class UserDto {
     @NotBlank
     private String userName;
 
+    @NotBlank
+    private String tcNo;
 
 
 

@@ -26,6 +26,11 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @NotNull
+    @Column(unique = true)
+    @Size(min = 5, max=5, message = "TcNo '${validatedValue}' must be five characters exactly !")
+    private String tcNo;
 
     @NotNull
     @NotBlank(message = "First name cannot be white space !")
@@ -50,9 +55,7 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointmentList = new ArrayList<>();
 
-
-    @JoinColumn(name = "user_id")
-    @OneToOne
+    @OneToOne(mappedBy = "patient")
     private User user;
 
 

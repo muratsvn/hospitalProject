@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,8 +29,12 @@ public class User {
     @NotBlank
     private String firstName;
 
-
-
+    @NotBlank
+    @NotNull
+    @Transient //tabloda görünmesin diye
+    @Column(unique = true)
+    @Size(min = 5, max=5, message = "TcNo '${validatedValue}' must be five characters exactly !")
+    private String tcNo;
 
     @Column(nullable = false,unique = true)
     @NotBlank
@@ -43,11 +49,13 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @JsonIgnore
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
 

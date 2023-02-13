@@ -7,7 +7,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/hospital_db
+    url: jdbc:postgresql://localhost:5432/hospital2_db
     username: db_user
     password: db_password
 
